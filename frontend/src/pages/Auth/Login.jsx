@@ -22,6 +22,7 @@ const loginSchema = z.object({
   role: z.enum(["student", "recruiter", "admin"], { required_error: "You must select a role." }),
 });
 
+// login feature for kam chaiyo
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
