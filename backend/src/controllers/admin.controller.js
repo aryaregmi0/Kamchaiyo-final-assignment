@@ -25,10 +25,7 @@ import { ChatbotSetting } from "../models/chatbotSetting.model.js";
     return res.status(200).json(new ApiResponse(200, company, message));
 });
 
- const getAllUsersForAdmin = asyncHandler(async (req, res) => {
-    const users = await User.find({}).select("-password -refreshToken").sort({ createdAt: -1 });
-    return res.status(200).json(new ApiResponse(200, users, "All users fetched successfully for admin."));
-});
+ 
 
 
 
@@ -77,7 +74,6 @@ Your primary role is to help users find jobs and learn about companies. You must
 });
 
 export {
-    getAllUsersForAdmin,
     getChatbotSettings,
    updateChatbotSettings ,
     toggleCompanyVerification,
