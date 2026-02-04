@@ -104,49 +104,6 @@ router.route("/companies/:companyId/toggle-verification").patch(toggleCompanyVer
  */
 router.route("/users").get(getAllUsersForAdmin);
 
-/**
- * @swagger
- * /admin/chatbot-settings:
- *   get:
- *     summary: Get the current system prompt for the AI chatbot
- *     tags: [Admin]
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       '200':
- *         description: The current chatbot settings.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 data:
- *                   type: object
- *                   properties:
- *                     systemPrompt:
- *                       type: string
- *   put:
- *     summary: Update the system prompt for the AI chatbot
- *     tags: [Admin]
- *     security:
- *       - bearerAuth: []
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required: [systemPrompt]
- *             properties:
- *               systemPrompt:
- *                 type: string
- *                 description: "The new set of master instructions for the chatbot's personality and rules."
- *     responses:
- *       '200':
- *         description: Chatbot settings updated successfully.
- *       '400':
- *         description: The system prompt content is required.
- */
-router.route("/chatbot-settings").get(getChatbotSettings).put(updateChatbotSettings);
+
 
 export default router;
