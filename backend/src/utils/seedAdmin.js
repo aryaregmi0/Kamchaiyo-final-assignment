@@ -30,10 +30,6 @@ const seedAdmin = async () => {
         await User.create(adminData);
         console.log("Admin user seeded successfully!");
 
-    } catch (error) {
-        console.error("Error seeding admin user:", error);
-    } finally {
-        mongoose.connection.close();
     }
 };
 
