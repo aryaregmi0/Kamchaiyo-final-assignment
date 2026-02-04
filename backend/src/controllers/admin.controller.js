@@ -81,5 +81,5 @@ export {
     getChatbotSettings,
    updateChatbotSettings ,
     toggleCompanyVerification,
- 
+    getAllCompaniesForAdmin
 }
