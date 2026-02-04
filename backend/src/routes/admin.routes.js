@@ -76,33 +76,7 @@ router.route("/companies").get(getAllCompaniesForAdmin);
  */
 router.route("/companies/:companyId/toggle-verification").patch(toggleCompanyVerification);
 
-/**
- * @swagger
- * /admin/users:
- *   get:
- *     summary: Get a list of all users in the system (Admin view)
- *     tags: [Admin]
- *     security:
- *       - bearerAuth: []
- *     description: Retrieves a complete list of all users (students, recruiters, and other admins).
- *     responses:
- *       '200':
- *         description: An array of all user objects.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 data:
- *                   type: array
- *                   items:
- *                     $ref: '#/components/schemas/User'
- *       '401':
- *         description: Unauthorized.
- *       '403':
- *         description: Forbidden. User is not an admin.
- */
-router.route("/users").get(getAllUsersForAdmin);
+
 
 /**
  * @swagger
