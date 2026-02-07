@@ -71,24 +71,3 @@ export const scheduleInterview = asyncHandler(async (req, res) => {
     return res.status(201).json(new ApiResponse(201, interview, "Interview scheduled successfully and notification sent."));
 });
 
-export const getMyInterviews = asyncHandler(async (req, res) => {
-    const query = req.user.role === 'student'
-        ? { student: req.user._id }
-        : { recruiter: req.user._id };
-
-    const interviews = await Interview.find(query)
-        .populate({
-            path: 'application',
-            select: 'job',
-            populate: {
-                path: 'job',
-                select: 'title company',
-                populate: { path: 'company', select: 'name' }
-            }
-        })
-        .populate('student', 'fullName profile')
-        .populate('recruiter', 'fullName')
-        .sort({ date: -1 });
-        
-    return res.status(200).json(new ApiResponse(200, interviews, "Interviews fetched successfully."));
-});
