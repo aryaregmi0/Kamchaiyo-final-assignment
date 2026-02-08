@@ -113,3 +113,18 @@ describe("Admin Routes", () => {
         expect(res.statusCode).toEqual(403);
     });
 });
+test("PUT /api/v1/admin/chatbot-settings - should fail if systemPrompt is empty", async () => {
+    const res = await request(app)
+        .put("/api/v1/admin/chatbot-settings")
+        .set("Authorization", `Bearer ${adminToken}`)
+        .send({ systemPrompt: "" }); 
+    expect(res.statusCode).toEqual(400);
+    expect(res.body.message).toContain("System prompt content is required");
+});
+test("GET /api/v1/admin/chatbot-settings - should fail if a non-admin tries to access", async () => {
+    const res = await request(app)
+    
+        .get("/api/v1/admin/chatbot-settings")
+        .set("Authorization", `Bearer ${studentToken}`); 
+    expect(res.statusCode).toEqual(403);
+});

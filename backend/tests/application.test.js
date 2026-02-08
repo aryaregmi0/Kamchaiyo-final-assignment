@@ -87,3 +87,38 @@ describe("Application Routes", () => {
         expect(res.body.data).toEqual([]);
     });
 });
+
+test("POST /api/v1/applications/apply/:jobId - should fail if user already applied", async () => {
+    const res = await request(app).post(`/api/v1/applications/apply/${jobId}`).set("Authorization", `Bearer ${studentToken}`);
+    expect(res.statusCode).toEqual(400);
+});
+
+test("PATCH /api/v1/applications/:applicationId/status - should fail with an invalid status", async () => {
+    const res = await request(app).patch(`/api/v1/applications/${application._id}/status`).set("Authorization", `Bearer ${recruiterToken}`).send({ status: "interviewing" });
+    expect(res.statusCode).toEqual(400);
+});
+
+test("PATCH /api/v1/applications/:applicationId/status - should fail if user is not the job poster", async () => {
+    const res = await request(app).patch(`/api/v1/applications/${application._id}/status`).set("Authorization", `Bearer ${otherRecruiterToken}`).send({ status: "rejected" });
+    expect(res.statusCode).toEqual(403);
+});
+
+test("GET /api/v1/applications/my-applications - should fetch the student's own applications", async () => {
+    const res = await request(app)
+        .get("/api/v1/applications/my-applications")
+        .set("Authorization", `Bearer ${studentToken}`);
+    expect(res.statusCode).toEqual(200);
+    expect(res.body.data.length).toBe(1);
+    expect(res.body.data[0].job.title).toBe("Apply Job");
+});
+
+
+test("GET /api/v1/applications/my-applications - should return empty array for a new user", async () => {
+    const newUser = await User.create({ fullName: "New Student", email: "new@student.com", password: "p", role: "student", phoneNumber: "999" });
+    const newToken = newUser.generateAccessToken();
+    const res = await request(app)
+        .get("/api/v1/applications/my-applications")
+        .set("Authorization", `Bearer ${newToken}`);
+    expect(res.statusCode).toEqual(200);
+    expect(res.body.data).toEqual([]);
+});
