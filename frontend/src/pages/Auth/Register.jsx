@@ -22,6 +22,7 @@ const registerSchema = z.object({
   password: z.string().min(8, { message: "Password must be at least 8 characters." }),
   role: z.enum(["student", "recruiter"], { required_error: "You must select a role." }),
 });
+// Register Feature for Kamchaiyo
 
 const Register = () => {
   const navigate = useNavigate();
