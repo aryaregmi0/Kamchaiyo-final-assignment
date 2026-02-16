@@ -39,10 +39,3 @@ export const isRecruiter = asyncHandler(async(req, _, next) => {
     }
     next();
 });
-
-export const isRecruiter = asyncHandler(async(req, _, next) => {
-  if (req.user?.role !== 'recruiter') {
-      throw new ApiError(403, "Access denied. Only recruiters can perform this action.");
-  }
-  next();
-});
