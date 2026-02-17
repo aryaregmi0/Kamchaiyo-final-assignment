@@ -41,6 +41,13 @@ const userSchema = new mongoose.Schema(
       resumeOriginalName: { type: String },
       avatar: { type: String }
     },
+    profile: {
+      bio: { type: String },
+      skills: [{ type: String }],
+      resume: { type: String }, 
+      resumeOriginalName: { type: String },
+      avatar: { type: String }
+    },
   },
   { timestamps: true }
 );
