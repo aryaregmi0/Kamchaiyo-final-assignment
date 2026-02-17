@@ -25,25 +25,3 @@ connectDB()
     console.log("MONGO db connection failed !!! ", err);
     process.exit(1);
   });
-
-  dotenv.config();
-
-const PORT = process.env.PORT || 8000;
-
-
-const httpServer = http.createServer(app);
-
-const io = initSocketIO(httpServer);
-
-app.set("io", io);
-
-connectDB()
-  .then(() => {
-    httpServer.listen(PORT, () => {
-      console.log(`Server is running at port: ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.log("MONGO db connection failed !!! ", err);
-    process.exit(1);
-  });
