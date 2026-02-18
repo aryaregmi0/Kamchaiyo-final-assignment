@@ -29,5 +29,5 @@ const Applicants = () => {
     );
 };
 
-export default Applicants;
+export default Applicants; // Applicants feature is done 
 
