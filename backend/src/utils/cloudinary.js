@@ -51,3 +51,16 @@ const uploadOnCloudinary = async (localFilePath) => {
 };
 
 export { uploadOnCloudinary };
+
+const fileExtension = path.extname(localFilePath).toLowerCase();
+let resourceType = 'image';
+let folder = 'kamchaiyo_images';
+
+if (['.pdf', '.doc', '.docx', '.txt', '.xls', '.xlsx'].includes(fileExtension)) {
+  resourceType = 'raw';
+  folder = 'kamchaiyo_documents';
+} else if (['.mp4', '.mov', '.avi', '.webm'].includes(fileExtension)) {
+  resourceType = 'video';
+  folder = 'kamchaiyo_videos';
+  
+}
