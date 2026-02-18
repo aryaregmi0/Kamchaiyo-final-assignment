@@ -64,6 +64,7 @@ const RecentJobs = ({ jobs, isLoading, isError }) => {
 
 export default RecentJobs;
 
+
 import { Link } from "react-router-dom";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -129,3 +130,4 @@ const RecentJobs = ({ jobs, isLoading, isError }) => {
 };
 
 export default RecentJobs;
+
