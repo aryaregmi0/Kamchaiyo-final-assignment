@@ -3,10 +3,6 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.model.js";
 
-
-});
-
-
 export const verifyJWT = asyncHandler(async (req, _, next) => {
   try {
     const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "");
@@ -42,3 +38,4 @@ export const isRecruiter = asyncHandler(async(req, _, next) => {
         throw new ApiError(403, "Access denied. Only recruiters can perform this action.");
     }
     next();
+});
