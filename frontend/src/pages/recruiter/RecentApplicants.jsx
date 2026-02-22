@@ -69,5 +69,3 @@ const RecentApplicants = ({ applicants, isLoading, isError }) => {
 };
 
 export default RecentApplicants;
-
-
