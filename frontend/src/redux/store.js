@@ -116,4 +116,4 @@ export const store = configureStore({
    ),
 });
 
-export const persistor = persistStore(store); // update done 
+export const persistor = persistStore(store); 
