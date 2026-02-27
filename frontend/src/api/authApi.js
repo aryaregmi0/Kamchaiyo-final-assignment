@@ -44,4 +44,4 @@ export const {
     useLoginMutation, 
     useUpdateProfileMutation,
     useGetUserPublicProfileQuery 
-} = authApi;
+} = authApi; // fixed
