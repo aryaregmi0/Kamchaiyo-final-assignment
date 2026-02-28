@@ -41,3 +41,4 @@ const interviewSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 export const Interview = mongoose.model("Interview", interviewSchema);
+
